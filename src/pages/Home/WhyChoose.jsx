@@ -3,7 +3,7 @@ import { FaCarSide, FaMoneyBillWave, FaHeadset, FaRegCheckCircle } from 'react-i
 
 const WhyChoose = () => {
     return (
-        <section className="py-16 rounded-xl m-4 px-6 bg-gradient-to-br from-[#05e9b4] to-[#0ffff9]">
+        <section className="py-16 rounded-xl mt-8 px-6 bg-gradient-to-br from-[#05e9b4] to-[#0ffff9]">
             <div className="max-w-7xl mx-auto text-center">
                 <h2 className="text-4xl font-bold mb-10 text-gray-800">Why Choose Us?</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
