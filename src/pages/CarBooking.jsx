@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
+import axios from 'axios';
 
 const CarBooking = () => {
   const { user } = use(AuthContext);
@@ -21,23 +22,41 @@ const CarBooking = () => {
     return Math.max(Math.round(diff), 1);
   };
 
-  const handleConfirmBooking = () => {
-    if (!startDate || !endDate) {
-      return Swal.fire('Error', 'Please select both start and end dates.', 'error');
-    }
+ const handleConfirmBooking = () => {
+  if (!startDate || !endDate) {
+    return Swal.fire('Error', 'Please select both start and end dates.', 'error');
+  }
 
-    const totalDays = getDayDifference(startDate, endDate);
-    const totalCost = totalDays * price;
+  const totalDays = getDayDifference(startDate, endDate);
+  const totalCost = totalDays * price;
 
-    Swal.fire({
-      title: 'Booking Confirmed!',
-      text: `You have booked ${carModel} for ${totalDays} days. Total cost: $${totalCost}`,
-      icon: 'success',
-      confirmButtonColor: '#05e9b4',
-    });
-
-    // Optional: Send booking data to the server here
+  const booking = {
+    bookingId: car._id,
+    applicant: user.email,
+    carModel,
+    availability,
+    price,
+    location,
+    startDate,
+    endDate,
+    totalCost
   };
+
+  axios.post('http://localhost:3000/bookings', booking)
+    .then(res => {
+      console.log(res.data);
+      Swal.fire({
+        title: 'Booking Confirmed!',
+        text: `You have booked ${carModel} for ${totalDays} days. Total cost: $${totalCost}`,
+        icon: 'success',
+        confirmButtonColor: '#05e9b4',
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      Swal.fire('Error', 'Booking failed. Try again.', 'error');
+    });
+};
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
