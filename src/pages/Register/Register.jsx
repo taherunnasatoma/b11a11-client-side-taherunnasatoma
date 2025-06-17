@@ -1,12 +1,14 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
+import { auth } from '../../firebase/firebase.init';
 
 const Register = () => {
 
-    const {createUser}=use(AuthContext)
+    const {createUser,updateUser,setUser}=use(AuthContext)
 
     const [error, setError] = useState('');
+    const navigate =useNavigate()
 
     const handleRegister = e=>{
         e.preventDefault()
@@ -26,18 +28,24 @@ const Register = () => {
     }
      console.log({ name, photoURL, email, password });
     
-     //create user
-     createUser(email,password)
-     .then(result=>{
-        console.log(result.user)
-     })
-
-     .catch(error=>{
-        console.log(error)
-     })
-
-
-
+     // Create user
+  createUser(email, password)
+  .then((result) => {
+    console.log('User created:', result.user); 
+    // Now update profile
+    updateUser({ displayName: name, photoURL })
+  .then(() => {
+    setUser({ ...auth.currentUser }); 
+    navigate('/');
+  })
+      .catch((error) => {
+        console.error('Profile update error:', error);
+      });
+  })
+  .catch((error) => {
+    console.error('Create user error:', error.message);
+    setError(error.message);
+  });
        
     }
    

@@ -20,8 +20,16 @@ const Navbar = () => {
      <li className='text-xl font-bold'><NavLink to='/'>Home</NavLink></li>
      <li className='text-xl font-bold' ><NavLink to='/available_cars'>Available Cars</NavLink></li>
      
-    
+     {
+      user && <>
+
+      
+     <li className='text-xl font-bold'><NavLink to='/addCar'>Add Car</NavLink></li>
+      </>
+    }
     </>
+
+   
     return (
         <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -48,7 +56,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-3">
-    <img className='w-12 rounded full' src={`${user ? user.photoURL : '/user.png'}`} alt="" />
+     <img className="w-12 rounded-full" src={user?.photoURL || '/user.png'} alt="User" />
    {
     user ? <button onClick={handleSignOut} className='btn bg-[#05e9b4] text-white'> Sign Out</button> :
     <>

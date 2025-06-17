@@ -7,6 +7,8 @@ import Home from "../pages/Home/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import ErrorPage from "../pages/Error/ErrorPage";
+import PrivateRoute from "../routes/PrivateRoute";
+import AddCar from "../pages/AddCar/AddCar";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,13 @@ const router = createBrowserRouter([
         {
             index:true,
             Component:Home
+        },
+
+        {
+          path:'addCar',
+          element:<PrivateRoute><AddCar></AddCar></PrivateRoute>
+
+
         },
         {
             path:'register',
