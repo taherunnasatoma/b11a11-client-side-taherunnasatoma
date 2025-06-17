@@ -3,20 +3,20 @@ import { Link } from 'react-router';
 
 const AvailableCars = () => {
   const [cars, setCars] = useState([]);
-  const [view, setView] = useState('grid'); // 'grid' or 'list'
-  const [sortBy, setSortBy] = useState('dateNewest'); // 'dateNewest', 'dateOldest', 'priceLow', 'priceHigh'
+  const [view, setView] = useState('grid'); 
+  const [sortBy, setSortBy] = useState('dateNewest'); 
 
   useEffect(() => {
     fetch('http://localhost:3000/cars')
       .then(res => res.json())
       .then(data => {
-        // Filter only available cars
+        
         const availableCars = data.filter(car => car.availability === 'available');
         setCars(availableCars);
       });
   }, []);
 
-  // Sorting handler
+  
   const sortCars = (cars, criteria) => {
     let sorted = [...cars];
     switch (criteria) {
@@ -44,9 +44,9 @@ const AvailableCars = () => {
     <div className="max-w-7xl mx-auto p-5">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Available Cars</h1>
 
-      {/* Controls */}
+      
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-        {/* View Toggle */}
+      
         <div>
           <button
             onClick={() => setView('grid')}
@@ -62,7 +62,7 @@ const AvailableCars = () => {
           </button>
         </div>
 
-        {/* Sorting Select */}
+       
         <div>
           <select
             value={sortBy}
@@ -77,7 +77,7 @@ const AvailableCars = () => {
         </div>
       </div>
 
-      {/* Cars Display */}
+   
       {view === 'grid' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {sortedCars.map(car => (

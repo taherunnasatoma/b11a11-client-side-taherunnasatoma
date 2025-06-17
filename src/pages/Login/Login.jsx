@@ -1,43 +1,43 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import SocialLogin from '../Shared/SocialLogin';
 
 const Login = () => {
 
     const { signInUser,signInWithGoogle } = use(AuthContext)
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state || '/';
+    console.log('location in login page',location)
 
-    const handleGoogleSignIn=()=>{
-        signInWithGoogle()
-        .then(result=>{
-            console.log(result)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
-    }
+   const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(result => {
+        console.log(result);
+        navigate(from); 
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
     const handleLogin = e => {
-        e.preventDefault()
+    e.preventDefault();
 
-        const form = e.target;
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-        const email = form.email.value;
-        const password = form.password.value;
-
-        console.log({ email, password })
-
-        // signInUser
-        signInUser(email, password)
-            .then(result => {
-                console.log(result.user)
-            })
-
-            .catch(error => {
-                console.log(error)
-            })
-
-    }
+    signInUser(email, password)
+      .then(result => {
+        console.log(result.user);
+        navigate(from); 
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
     return (
 

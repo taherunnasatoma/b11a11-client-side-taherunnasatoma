@@ -10,6 +10,8 @@ import ErrorPage from "../pages/Error/ErrorPage";
 import PrivateRoute from "../routes/PrivateRoute";
 import AddCar from "../pages/AddCar/AddCar";
 import AvailableCars from "../pages/AvailableCars/AvailableCars";
+import CarDetails from "../pages/CarDetails/CarDetails";
+import CarBooking from "../pages/CarBooking";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,17 @@ const router = createBrowserRouter([
       path:'available_cars',
       Component:AvailableCars
         },
+        {
+          path:'/cars/:id',
+          Component:CarDetails,
+          loader:({params})=>fetch(`http://localhost:3000/cars/${params.id}`)
+        },
+        {
+          path:'carBooking/:id',
+          element:<PrivateRoute><CarBooking></CarBooking></PrivateRoute>,
+          loader:({params})=>fetch(`http://localhost:3000/cars/${params.id}`)
+        },
+
         {
             path:'register',
             Component:Register
