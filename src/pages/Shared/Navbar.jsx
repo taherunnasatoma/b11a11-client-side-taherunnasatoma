@@ -25,7 +25,11 @@ const Navbar = () => {
 
       
      <li className='text-xl font-bold'><NavLink to='/addCar'>Add Car</NavLink></li>
+      
+     <li className='text-xl font-bold'><NavLink to='/myBookings'>My Bookings</NavLink></li>
+     
       </>
+     
     }
     </>
 
