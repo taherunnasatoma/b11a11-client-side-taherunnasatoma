@@ -1,4 +1,4 @@
-import React, { useState, use } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import { FaTrash, FaCalendarAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
@@ -8,14 +8,22 @@ import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 
 const BookingsList = ({ myBookingsPromise }) => {
-  const { user } = use(AuthContext);
-  const initialBookings = use(myBookingsPromise);
-  const [bookings, setBookings] = useState(initialBookings);
+  const { user } = useContext(AuthContext); 
+  const [bookings, setBookings] = useState([]);
   const [editingBooking, setEditingBooking] = useState(null);
   const [newStartDate, setNewStartDate] = useState(null);
   const [newEndDate, setNewEndDate] = useState(null);
 
   const MySwal = withReactContent(Swal);
+
+  
+  useEffect(() => {
+    if (user?.email) {
+      myBookingsPromise(user.email)
+        .then((data) => setBookings(data))
+        .catch((err) => console.error('Booking fetch failed:', err));
+    }
+  }, [user, myBookingsPromise]);
 
   const handleCancel = (id) => {
     MySwal.fire({

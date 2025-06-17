@@ -4,7 +4,7 @@ const RecentCars = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/cars')
+    fetch('http://localhost:3000/all-cars')
       .then(res => res.json())
       .then(data => {
         // Sort by date and pick the latest 6-8
@@ -38,7 +38,7 @@ const RecentCars = () => {
             >
               {car.availability}
             </span>
-            <p className="text-sm">Booking Count: {car.bookingCount || 0}</p>
+            <p className="text-sm">Booking Count: {car.bookingsCount || 0}</p>
             <p className="text-sm">
               Posted {Math.floor((Date.now() - new Date(car.createdAt)) / (1000 * 60 * 60 * 24)) || 0} days ago
             </p>

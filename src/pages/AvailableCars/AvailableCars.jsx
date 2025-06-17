@@ -8,13 +8,13 @@ const AvailableCars = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3000/cars')
-      .then(res => res.json())
-      .then(data => {
-        const availableCars = data.filter(car => car.availability === 'available');
-        setCars(availableCars);
-      });
-  }, []);
+  fetch('http://localhost:3000/all-cars')
+    .then(res => res.json())
+    .then(data => {
+      const availableCars = data.filter(car => car.availability === 'available');
+      setCars(availableCars);
+    });
+}, []);
 
   const sortCars = (cars, criteria) => {
     let sorted = [...cars];
@@ -106,7 +106,7 @@ const AvailableCars = () => {
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
               <h3 className="text-xl font-semibold mb-2">{car.carModel}</h3>
-              <p className="text-gray-700 mb-1">Brand: {car.brand || 'Unknown'}</p>
+              
               <p className="text-gray-700 mb-1">Price: ${car.price} / day</p>
               <p className="text-gray-700 mb-3">Location: {car.location}</p>
               <Link
