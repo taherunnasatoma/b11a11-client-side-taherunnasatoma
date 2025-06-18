@@ -42,7 +42,7 @@ const CarBooking = () => {
     totalCost
   };
 
-  axios.post('http://localhost:3000/bookings', booking)
+  axios.post('https://car-rental-server-coral.vercel.app/bookings', booking)
     .then(res => {
       console.log(res.data);
       Swal.fire({

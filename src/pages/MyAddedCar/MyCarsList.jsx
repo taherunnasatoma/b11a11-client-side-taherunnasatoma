@@ -56,7 +56,7 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
 
     try {
      
-      const res = await fetch(`http://localhost:3000/cars/${editingCar._id}`, {
+      const res = await fetch(`https://car-rental-server-coral.vercel.app/cars/${editingCar._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -96,7 +96,7 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:3000/cars/${carId}`, {
+          const res = await fetch(`https://car-rental-server-coral.vercel.app/cars/${carId}`, {
             method: 'DELETE',
           });
           if (!res.ok) throw new Error('Failed to delete car');

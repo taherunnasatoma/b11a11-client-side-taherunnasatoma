@@ -1,5 +1,5 @@
 export const myBookingsPromise =(email,accessToken)=>{
-    return fetch(`http://localhost:3000/bookings?email=${email}`,{
+    return fetch(`https://car-rental-server-coral.vercel.app/bookings?email=${email}`,{
         headers:{
             authorization:`Bearer ${accessToken}`
         }

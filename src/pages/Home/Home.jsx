@@ -10,7 +10,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/cars')
+    fetch('https://car-rental-server-coral.vercel.app/cars')
       .then(res => res.json())
       .then(data => {
         setCars(data);

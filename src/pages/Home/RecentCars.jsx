@@ -4,7 +4,7 @@ const RecentCars = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/all-cars')
+    fetch('https://car-rental-server-coral.vercel.app/all-cars')
       .then(res => res.json())
       .then(data => {
         // Sort by date and pick the latest 6-8

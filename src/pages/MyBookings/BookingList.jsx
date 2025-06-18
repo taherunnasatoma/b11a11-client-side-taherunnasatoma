@@ -35,7 +35,7 @@ const BookingsList = ({ myBookingsPromise }) => {
       confirmButtonText: 'Yes, cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.patch(`http://localhost:3000/bookings/${id}`, { status: 'Canceled' }).then(() => {
+        axios.patch(`https://car-rental-server-coral.vercel.app/bookings/${id}`, { status: 'Canceled' }).then(() => {
           setBookings(bookings.map(b => b._id === id ? { ...b, status: 'Canceled' } : b));
           Swal.fire('Canceled!', 'Booking has been canceled.', 'success');
         });
@@ -50,7 +50,7 @@ const BookingsList = ({ myBookingsPromise }) => {
   };
 
   const handleConfirmModification = () => {
-    axios.patch(`http://localhost:3000/bookings/${editingBooking._id}`, {
+    axios.patch(`https://car-rental-server-coral.vercel.app/bookings/${editingBooking._id}`, {
       startDate: newStartDate,
       endDate: newEndDate,
     }).then(() => {
