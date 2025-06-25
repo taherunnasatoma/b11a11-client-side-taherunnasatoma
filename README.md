@@ -19,3 +19,48 @@ A feature-rich car rental web application that allows users to browse available 
   -📱 Fully responsive design
   -🎨 Attractive UI with animation and modals
 
+## Dependencies
+- React  
+- React Router DOM  
+- Axios  
+- Express  
+- Mongodb  
+- dotenv  
+
+
+## Getting Started (Run Locally)
+
+1. **Clone the repository:**  
+   ```bash
+   git clone https://github.com/taherunnasatoma/b11a11-client-side-taherunnasatoma.git
+
+ 2. **Navigate to the project directory:**
+    ```bash
+    cd b11a11-client-side-taherunnasatoma.git
+3. **Install frontend dependencies:**
+      ```bash
+      npm install
+
+4. **Install backend dependencies:**
+      ```bash
+      git clone https://github.com/taherunnasatoma/b11a11-server-side-taherunnasatoma.git
+      cd b11a11-server-side-taherunnasatoma.git
+      npm install
+
+5.**Setup environment variables:**
+   
+   Create a .env file in the /server folder and add:
+
+   MONGODB_URI=your_mongodb_connection_string
+
+6. **Run the backend server:**
+   ```bash
+   nodemon index.js
+
+7. **Run the frontend development server:**
+   ```bash
+   npm run dev
+
+8.**Live Demo:**
+
+https://tangerine-cobbler-2e732b.netlify.app/
