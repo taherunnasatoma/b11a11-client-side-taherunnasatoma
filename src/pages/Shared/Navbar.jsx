@@ -48,7 +48,7 @@ const Navbar = () => {
             </ul>
           </div>
           <NavLink to="/" className="btn btn-ghost normal-case text-xl font-bold text-white">
-            🚗 <span className="ml-1"><span className='text-white text-2xl'>Dream</span>Ride Rentals</span>
+            🚗 <span className="ml-1"><span className='text-white text-2xl'>Dream</span><span className='text-black'>Ride</span></span>
           </NavLink>
         </div>
 
