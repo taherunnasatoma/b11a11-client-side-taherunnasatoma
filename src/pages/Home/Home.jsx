@@ -27,12 +27,14 @@ const Home = () => {
   }
 
   return (
-    <div className='max-w-7xl mx-auto m-5'>
+    <div className=' mx-auto m-5'>
       <Banner />
-      <RecentCars cars={cars} />
+      <div className='max-w-7xl mx-auto m-5'>
+     <RecentCars cars={cars} />
       <WhyChoose />
       <SpecialOffers />
       <TopFeatures />
+      </div>
     </div>
   );
 };

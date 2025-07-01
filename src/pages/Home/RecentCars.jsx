@@ -14,8 +14,8 @@ const RecentCars = () => {
   }, []);
 
   return (
-    <section className="my-12 px-4">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Recent Listings</h2>
+    <section className="py-16 rounded-xl mt-8 px-6 bg-gradient-to-br from-[#65bbd6] to-[rgba(30,155,153,0.14)] p-4">
+      <h2 className="text-3xl font-bold text-center mb-8 text-white">Recent Listings</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {cars.map(car => (
