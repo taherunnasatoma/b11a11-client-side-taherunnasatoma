@@ -35,7 +35,7 @@ const CarDetails = () => {
             <strong>Status:</strong>{' '}
             <span
               className={`font-semibold ${
-                availability === 'available' ? 'text-green-600' : 'text-red-500'
+                availability === 'available' ? 'text-[#65bbd6]' : 'text-red-500'
               }`}
             >
               {availability}
@@ -51,7 +51,7 @@ const CarDetails = () => {
               {features?.map((feature, idx) => (
                 <span
                   key={idx}
-                  className="bg-[#05e9b4] text-white px-3 py-1 rounded-full text-sm"
+                  className="bg-[#65bbd6] text-white px-3 py-1 rounded-full text-sm"
                 >
                   {feature}
                 </span>
@@ -67,7 +67,7 @@ const CarDetails = () => {
           <Link to={`/carBooking/${_id}`}>
           <button
             
-            className="btn bg-[#05e9b4] hover:bg-[#04c79a] text-white px-6 py-2 rounded-md"
+            className="btn bg-[#65bbd6] hover:bg-[#04a0c7] text-white px-6 py-2 rounded-md"
           >
             Book Now
           </button>

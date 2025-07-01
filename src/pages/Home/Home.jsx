@@ -4,6 +4,7 @@ import WhyChoose from './WhyChoose';
 import SpecialOffers from './SpecialOffers';
 import TopFeatures from './TopFeatures';
 import RecentCars from './RecentCars';
+import Testimonials from './Testimonials';
 
 const Home = () => {
   const [cars, setCars] = useState([]);
@@ -34,6 +35,7 @@ const Home = () => {
       <WhyChoose />
       <SpecialOffers />
       <TopFeatures />
+      <Testimonials/>
       </div>
     </div>
   );

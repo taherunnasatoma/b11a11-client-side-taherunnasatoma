@@ -105,7 +105,7 @@ const AddCar = () => {
                         </div>
 
                         <div className="md:col-span-2 flex justify-between items-center mt-4">
-                            <button className="btn bg-[#05e9b4] hover:bg-[#04c79a] text-white w-full">Add Car</button>
+                            <button className="btn bg-[#65bbd6] hover:bg-[#04c0c7] text-white w-full">Add Car</button>
                             {/* {error && <p className="text-red-500">{error}</p>}
             {success && <p className="text-green-600">{success}</p>} */}
                         </div>

@@ -10,7 +10,7 @@ import axios from 'axios';
 const CarBooking = () => {
   const { user } = use(AuthContext);
   const car = useLoaderData();
-  const { carModel, availability, price, location } = car;
+  const { carModel, availability, price, location,imageUrl } = car;
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -39,7 +39,8 @@ const CarBooking = () => {
     location,
     startDate,
     endDate,
-    totalCost
+    totalCost,
+    imageUrl
   };
 
   axios.post('https://car-rental-server-coral.vercel.app/bookings', booking)
@@ -60,6 +61,7 @@ const CarBooking = () => {
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+      <img src={imageUrl} alt="" />
       <h2 className="text-xl font-bold mb-4">Booking: {carModel}</h2>
       <p><strong>Availability:</strong> {availability}</p>
       <p><strong>Price:</strong> ${price} / day</p>
@@ -93,7 +95,7 @@ const CarBooking = () => {
       <div className="flex justify-between mt-6">
         <button
           onClick={handleConfirmBooking}
-          className="btn bg-[#05e9b4] hover:bg-[#04c79a] text-white"
+          className="btn bg-[#65bbd6] hover:bg-[#04a3c7] text-white"
         >
           Confirm
         </button>

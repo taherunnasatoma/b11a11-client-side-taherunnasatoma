@@ -61,7 +61,7 @@ const Login = () => {
                             <a className="link link-hover text-sm">Forgot password?</a>
                         </div>
 
-                        <button className="btn bg-[#05e9b4] text-white w-full">Login</button>
+                        <button className="btn bg-[#65bbd6] text-white w-full">Login</button>
                     </form>
                     <SocialLogin></SocialLogin>
                     <button onClick={handleGoogleSignIn} className="btn bg-white text-black border-[#e5e5e5]">

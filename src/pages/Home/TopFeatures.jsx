@@ -22,9 +22,9 @@ const features = [
 
 const TopFeatures = () => {
   return (
-    <section className="py-16 px-6 bg-gray-100 mt-8 rounded-xl shadow">
+    <section className="py-16 px-6 bg-gradient-to-br from-[#65bbd6] to-[rgba(30,155,153,0.14)] mt-8 rounded-xl shadow">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12">What Sets Us Apart</h2>
+        <h2 className="text-4xl font-bold text-white mb-12">What Sets Us Apart</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((item, idx) => (
             <motion.div
@@ -34,9 +34,9 @@ const TopFeatures = () => {
               transition={{ duration: 0.5, delay: idx * 0.2 }}
               className="bg-[#f9f9f9] p-8 rounded-xl text-center shadow-md hover:shadow-xl transition duration-300"
             >
-              <div className="text-5xl text-[#05e9b4] mb-4 flex justify-center">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
+              <div className="text-5xl text-[#65bbd6] mb-4 flex justify-center">{item.icon}</div>
+              <h3 className="text-xl font-semibold text-black mb-2">{item.title}</h3>
+              <p className="text-black text-sm">{item.desc}</p>
             </motion.div>
           ))}
         </div>

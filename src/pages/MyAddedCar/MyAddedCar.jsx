@@ -11,7 +11,7 @@ const MyAddedCar = () => {
     const{carsCreatedByPromise} =useCarApi()
     return (
         <div>
-            <Suspense fallback={'car is loading'}>
+            <Suspense fallback={<span className="loading loading-bars loading-xl"></span>}>
                 <MyCarsList carsCreatedByPromise={carsCreatedByPromise(user.email,user.accessToken)}></MyCarsList>
             </Suspense>
         </div>

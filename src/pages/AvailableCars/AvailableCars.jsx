@@ -11,7 +11,8 @@ const AvailableCars = () => {
   fetch('https://car-rental-server-coral.vercel.app/all-cars')
     .then(res => res.json())
     .then(data => {
-      const availableCars = data.filter(car => car.availability === 'available');
+     const availableCars = data.filter(car => car.availability.toLowerCase() === 'available');
+
       setCars(availableCars);
     });
 }, []);
@@ -70,13 +71,13 @@ const AvailableCars = () => {
           <div>
             <button
               onClick={() => setView('grid')}
-              className={`btn mr-2 ${view === 'grid' ? 'bg-[#05e9b4] text-white' : 'bg-gray-200'}`}
+              className={`btn mr-2 ${view === 'grid' ? 'bg-[#65bbd6] text-white' : 'bg-gray-200'}`}
             >
               Grid View
             </button>
             <button
               onClick={() => setView('list')}
-              className={`btn ${view === 'list' ? 'bg-[#05e9b4] text-white' : 'bg-gray-200'}`}
+              className={`btn ${view === 'list' ? 'bg-[#65bbd6] text-white' : 'bg-gray-200'}`}
             >
               List View
             </button>
@@ -111,7 +112,7 @@ const AvailableCars = () => {
               <p className="text-gray-700 mb-3">Location: {car.location}</p>
               <Link
                 to={`/cars/${car._id}`}
-                className="mt-auto inline-block bg-[#05e9b4] text-white px-4 py-2 rounded hover:bg-[#04c79a] text-center"
+                className="mt-auto inline-block bg-[#65bbd6] text-white px-4 py-2 rounded hover:bg-[#0455c7e3] text-center"
               >
                 Book Now
               </Link>
@@ -135,7 +136,7 @@ const AvailableCars = () => {
               </div>
               <Link
                 to={`/cars/${car._id}`}
-                className="inline-block bg-[#05e9b4] text-white px-4 py-2 rounded hover:bg-[#04c79a]"
+                className="inline-block bg-[#65bbd6] text-white px-4 py-2 rounded hover:bg-[#04b0c7]"
               >
                 Book Now
               </Link>

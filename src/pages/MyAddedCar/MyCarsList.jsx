@@ -1,5 +1,4 @@
 import React, { useState, use } from 'react';
-
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Link } from 'react-router';
@@ -20,17 +19,18 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
     location: '',
   });
 
+  const [carsState, setCars] = useState(cars);
 
   const openEditModal = (car) => {
     setEditingCar(car);
     setFormData({
-      model: car.model || '',
-      dailyPrice: car.dailyPrice || '',
+      model: car.carModel || '',
+      dailyPrice: car.price || '',
       availability: car.availability || '',
-      regNumber: car.regNumber || '',
+      regNumber: car.registrationNumber || '',
       features: car.features || '',
       description: car.description || '',
-      images: car.images || '',
+      images: car.imageUrl || '',
       location: car.location || '',
     });
   };
@@ -43,7 +43,6 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-
     if (!formData.model.trim()) {
       MySwal.fire('Error', 'Car Model is required', 'error');
       return;
@@ -52,16 +51,14 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
       MySwal.fire('Error', 'Daily Rental Price must be a number', 'error');
       return;
     }
-    // Add more validation as needed
 
     try {
-     
       const res = await fetch(`https://car-rental-server-coral.vercel.app/cars/${editingCar._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: formData.model,
-          dailyPrice: parseFloat(formData.dailyPrice),
+          carModel: formData.model,
+          price: parseFloat(formData.dailyPrice),
           availability: formData.availability,
           regNumber: formData.regNumber,
           features: formData.features,
@@ -73,17 +70,25 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
 
       if (!res.ok) throw new Error('Failed to update car');
 
-     
-      const updatedCar = { ...editingCar, ...formData, dailyPrice: parseFloat(formData.dailyPrice) };
-      setCars((prev) => prev.map((c) => (c._id === updatedCar._id ? updatedCar : c)));
+      const updatedCar = {
+        ...editingCar,
+        carModel: formData.model,
+        price: parseFloat(formData.dailyPrice),
+        availability: formData.availability,
+        regNumber: formData.regNumber,
+        features: formData.features,
+        description: formData.description,
+        images: formData.images,
+        location: formData.location,
+      };
 
+      setCars((prev) => prev.map((c) => (c._id === updatedCar._id ? updatedCar : c)));
       MySwal.fire('Success', 'Car updated successfully', 'success');
       setEditingCar(null);
     } catch (error) {
       MySwal.fire('Error', error.message, 'error');
     }
   };
-
 
   const onDelete = (carId) => {
     MySwal.fire({
@@ -100,8 +105,6 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
             method: 'DELETE',
           });
           if (!res.ok) throw new Error('Failed to delete car');
-
-        
           setCars((prev) => prev.filter((c) => c._id !== carId));
           MySwal.fire('Deleted!', 'Your car has been deleted.', 'success');
         } catch (error) {
@@ -111,14 +114,11 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
     });
   };
 
-
-  const [carsState, setCars] = useState(cars);
-
   if (carsState.length === 0) {
     return (
       <div className="text-center p-10">
         <p className="mb-4 text-lg">You have not added any cars yet.</p>
-        <Link to="/addCar" className="btn btn-primary">
+        <Link to="/addCar" className="btn bg-[#65bbd6] text-white">
           Add Car
         </Link>
       </div>
@@ -157,16 +157,10 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
                 <td className="p-3 border">{car.availability}</td>
                 <td className="p-3 border">{new Date(car.createdAt).toLocaleDateString()}</td>
                 <td className="p-3 border space-x-2">
-                  <button
-                    className="btn btn-sm btn-info"
-                    onClick={() => openEditModal(car)}
-                  >
+                  <button className="btn btn-sm btn-info" onClick={() => openEditModal(car)}>
                     Update
                   </button>
-                  <button
-                    className="btn btn-sm btn-error"
-                    onClick={() => onDelete(car._id)}
-                  >
+                  <button className="btn btn-sm btn-error" onClick={() => onDelete(car._id)}>
                     Delete
                   </button>
                 </td>
@@ -176,7 +170,7 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
         </table>
       </div>
 
-    
+      {/* Update Modal */}
       {editingCar && (
         <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
           <form
@@ -244,7 +238,6 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
                 value={formData.features}
                 onChange={onChange}
                 className="input input-bordered w-full mt-1"
-                placeholder="GPS, AC, etc."
               />
             </label>
 
@@ -267,7 +260,6 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
                 value={formData.images}
                 onChange={onChange}
                 className="input input-bordered w-full mt-1"
-                placeholder="image url"
               />
             </label>
 
@@ -283,11 +275,7 @@ const MyCarsList = ({ carsCreatedByPromise }) => {
             </label>
 
             <div className="flex justify-end gap-4">
-              <button
-                type="button"
-                onClick={() => setEditingCar(null)}
-                className="btn btn-outline"
-              >
+              <button type="button" onClick={() => setEditingCar(null)} className="btn btn-outline">
                 Cancel
               </button>
               <button type="submit" className="btn btn-primary">

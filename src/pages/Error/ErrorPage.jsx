@@ -16,7 +16,7 @@ const ErrorPage = () => {
         The page you are looking for doesn’t exist or was moved.
       </p>
       <Link to="/">
-        <button className="bg-[#05e9b4] text-black px-6 py-3 rounded-full font-semibold shadow hover:bg-white transition">
+        <button className="bg-[#65bbd6] text-black px-6 py-3 rounded-full font-semibold shadow hover:bg-white transition">
           Back to Home
         </button>
       </Link>

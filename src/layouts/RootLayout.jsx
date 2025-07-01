@@ -5,10 +5,15 @@ import Navbar from '../pages/Shared/Navbar';
 
 const RootLayout = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-           <Outlet></Outlet> 
-           <Footer></Footer>
+         <div className="min-h-screen flex flex-col">
+            <Navbar />
+            
+            
+            <main className="flex-grow">
+                <Outlet />
+            </main>
+
+            <Footer />
         </div>
     );
 };

@@ -15,7 +15,7 @@ const Banner = () => {
             Discover a wide range of affordable and luxury cars for every journey.
           </p>
           <Link to="/available_cars">
-            <button className="bg-white text-[#65bbd6] font-bold px-8 py-3 rounded-full text-lg hover:bg-white transition duration-300 shadow-lg">
+            <button className="bg-white text-[#65bbd6] cursor-pointers font-bold px-8 py-3 rounded-full text-lg hover:bg-white transition duration-300 shadow-lg">
               View Available Cars
             </button>
           </Link>
