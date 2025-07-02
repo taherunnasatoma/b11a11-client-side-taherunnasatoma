@@ -63,7 +63,7 @@ const RecentCars = () => {
               >
                 {car.availability}
               </span>
-              <p className="text-sm text-gray-500 mb-1">Bookings: {car.bookingsCount || 0}</p>
+              {/* <p className="text-sm text-gray-500 mb-1">Bookings: {car.bookingsCount || 0}</p> */}
               <p className="text-sm text-gray-500">
                 Posted {Math.floor((Date.now() - new Date(car.createdAt)) / (1000 * 60 * 60 * 24)) || 0} days ago
               </p>

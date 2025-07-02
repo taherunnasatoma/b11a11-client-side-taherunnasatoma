@@ -35,7 +35,7 @@ const Register = () => {
     // Now update profile
     updateUser({ displayName: name, photoURL })
   .then(() => {
-    setUser({ ...auth.currentUser }); 
+    // setUser({ ...auth.currentUser }); 
     navigate('/');
   })
       .catch((error) => {
