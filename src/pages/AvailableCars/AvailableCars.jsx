@@ -8,7 +8,7 @@ const AvailableCars = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-  fetch('https://car-rental-server-coral.vercel.app/all-cars')
+  fetch('https://carrental-pi.vercel.app/all-cars')
     .then(res => res.json())
     .then(data => {
      const availableCars = data.filter(car => car.availability.toLowerCase() === 'available');

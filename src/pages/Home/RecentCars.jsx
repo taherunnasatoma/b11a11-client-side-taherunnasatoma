@@ -5,7 +5,7 @@ const RecentCars = () => {
   const [sortBy, setSortBy] = useState('latest');
 
   useEffect(() => {
-    fetch('https://car-rental-server-coral.vercel.app/all-cars')
+    fetch('https://carrental-pi.vercel.app/all-cars')
       .then(res => res.json())
       .then(data => {
         handleSort(data, sortBy);

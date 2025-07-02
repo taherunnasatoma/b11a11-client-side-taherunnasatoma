@@ -4,7 +4,7 @@ import { AuthContext } from '../contexts/AuthContext/AuthContext';
 
 
 const axiosInstance=axios.create({
-    baseURL:'https://car-rental-server-coral.vercel.app'
+    baseURL:'https://carrental-pi.vercel.app'
 })
 
 const useAxiosToken = () => {

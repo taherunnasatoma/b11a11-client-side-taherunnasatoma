@@ -25,7 +25,7 @@ const AddCar = () => {
 
         console.log('Submitting:', newCar);
 
-        axios.post('https://car-rental-server-coral.vercel.app/cars', newCar)
+        axios.post('https://carrental-pi.vercel.app/cars', newCar)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

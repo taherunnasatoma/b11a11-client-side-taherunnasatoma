@@ -43,7 +43,7 @@ const CarBooking = () => {
     imageUrl
   };
 
-  axios.post('https://car-rental-server-coral.vercel.app/bookings', booking)
+  axios.post('https://carrental-pi.vercel.app/bookings', booking)
     .then(res => {
       console.log(res.data);
       Swal.fire({

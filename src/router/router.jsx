@@ -44,12 +44,12 @@ const router = createBrowserRouter([
         {
           path:'/cars/:id',
           Component:CarDetails,
-          loader:({params})=>fetch(`https://car-rental-server-coral.vercel.app/cars/${params.id}`)
+          loader:({params})=>fetch(`https://carrental-pi.vercel.app/cars/${params.id}`)
         },
         {
           path:'carBooking/:id',
           element:<PrivateRoute><CarBooking></CarBooking></PrivateRoute>,
-          loader:({params})=>fetch(`https://car-rental-server-coral.vercel.app/cars/${params.id}`)
+          loader:({params})=>fetch(`https://carrental-pi.vercel.app/cars/${params.id}`)
         },
         {
            path:'myBookings',
